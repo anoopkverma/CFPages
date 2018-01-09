@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+		<ul class="list-group">
+			{% for blog in blogs %}
+				<li class="list-group-item">
+					<div class="h3">
+						<a href="">{{blog.title}}</a>
+				    </div><br>
+					<div class="float-right"> <b>{{blog.user.first_name}} {{blog.user.last_name}}</b> @{{blog.user.username}}<br>
+					Date : {{blog.create_date}}
+					</div><br>
+					<div class="float-left">
+						<p><span style="display: inline-block; width: 50px;" class="glyphicon glyphicon-thumbs-up"></span><span class="glyphicon glyphicon-comment"></span></p>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+{% endblock %}

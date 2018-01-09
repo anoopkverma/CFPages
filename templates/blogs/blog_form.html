@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>Title:</label>
+			<input class="form-control" type="text" name="title" id="title"><br>
+			<textarea class="form-control" rows="15" id="content" name="content"></textarea>
+		</div>
+		<input type="submit" name="submit" class="btn btn-primary float-right">
+	</form>
+{% endblock %}

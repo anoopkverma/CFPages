@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CFPages</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div style="text-align: center;background-color:rgba(100,100,100,.2);padding:.8em;">
+		<h1>ColorFul Pages</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<nav class="navbar bg-light">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+					</ul>
+				</nav>
+				{% if user.is_authenticated %}
+					<h3 style="text-align: center;">User : {{ user.first_name }} {{user.last_name}}</h3>
+					<br>
+					<a href="/blogs/blog_form/" class="btn btn-primary btn-block" style="color:white;">Post New Feed</a><br>
+					<a href="/users/logout" class="btn btn-primary btn-block" style="color:white;">Logout</a>
+				{% else %}
+				    <h3>You are not logged in.</h3>
+				    <br>
+					<a href="/users/login" class="btn btn-primary btn-block" style="color:white;">Log In</a>
+					<br>
+					<a href="/users/register/" class="btn btn-primary btn-block" style="color:white;">Sign Up</a><br>
+				{% endif %}
+			</div>
+			<div class="col-sm-8 jumbotron">
+				{% block body %}
+
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
