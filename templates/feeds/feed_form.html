@@ -1,0 +1,14 @@
+{% extends 'feeds/allfeeds.html' %}
+{% block feed_form %}
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>What's in your mind </label>
+			<textarea class="form-control" rows="3" id="post" name="post"></textarea>
+			<!--
+			<input type="text" name="post" id="post" class="form-control">
+		-->
+		</div>
+		<input type="submit" name="submit" class="btn btn-primary" value="Post">
+	</form>
+{% endblock %}
