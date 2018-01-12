@@ -22,3 +22,8 @@ def validate_blog_form(blog):
 	if len(blog['title']) > 0 and len(blog['content']) > 0:
 		flag = True
 	return flag
+
+def blog(request,blog_id):
+	blog = Blog.objects.get(id=blog_id)
+	return render(request,'blogs/blog.html',{'blog':blog})
+	
