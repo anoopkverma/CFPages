@@ -25,5 +25,13 @@ def validate_blog_form(blog):
 
 def blog(request,blog_id):
 	blog = Blog.objects.get(id=blog_id)
-	return render(request,'blogs/blog.html',{'blog':blog})
+	if request.method=="POST":
+		content = request.POST['comment']
+		comment =  Comment()
+		comment.content =  content
+		comment.user = request.user
+		comment.blog = blog
+		comment.save()
+	comments = Comment.objects.filter(blog=blog)
+	return render(request,'blogs/blog.html',{'blog':blog, 'comments':comments})
 	

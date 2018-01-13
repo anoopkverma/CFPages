@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
 		<ul class="list-group">
-			<li>
-				<a href="/blogs/blog_form/" class="btn btn-primary" style="color:white;">Creat blog</a><br>
+			<li class="list-group-item">
+				<b class="h3">Blogs</b>
+				<a href="/blogs/blog_form/" class="btn btn-primary pull-right" style="color:white;">Write blog</a><br>
 			</li><br>
 			{% for blog in blogs %}
 				<li class="list-group-item">

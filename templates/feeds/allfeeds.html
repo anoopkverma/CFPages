@@ -2,8 +2,10 @@
 {% block body %}
 	{% if user.is_authenticated %}
 		<ul class="list-group">
-			<li>
-				<a href="/feeds/feed_form/" class="btn btn-primary" style="color:white;">Create Post</a><br>
+			<li class="list-group-item">
+				<b class="h3">Feed</b>
+				<a href="/feeds/feed_form/" class="btn btn-primary pull-right" style="color:white;">Compose</a>
+				<br>
 			</li><br>
 			<li class="list-group-item">
 				{% block feed_form %}
@@ -13,11 +15,11 @@
 			{% for feed in feeds %}
 				<li class="list-group-item">
 					<div> <b>{{feed.user.first_name}} {{feed.user.last_name}}</b> @{{feed.user.username}}</div>
-					<div> {{feed.post}} </div>
+					<div> {{feed.content}} </div>
 					<div class="float-right">{{feed.date}}</div><br>
 					<div class="float-right">
 						<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
-						<a href="" class="btn btn-primary">Comment</a>
+						<a href="/feeds/{{feed.id}}" class="btn btn-primary">Comment</a>
 					</div>
 				</li>
 			{% endfor %}

@@ -1,24 +1,20 @@
 {% extends 'base.html' %}
 {% block body %}
-	<h2>{{ blog.title }}</h2>
-	<div>
-		<p>
-			{{ blog.content }}
-		</p>
-	</div>
-	<div class="text-right">
-		<p>-{{ blog.user.username }}</p>
-		<span class="glyphicon glyphicon-calenger"></span>{{ blog.create_date }}<br>
+	<div> <b>{{feed.user.first_name}} {{feed.user.last_name}}</b> @{{feed.user.username}}</div>
+	<div> {{feed.content}} </div>
+	<div class="float-right">{{feed.date}}</div><br>
+	<div class="float-right">
+		<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span>Like</a>
 	</div>
 	<div><hr style="color: white;border-width: 2px;"></div>
 	<div class="h3">
-		{{ blog.comments }} Comments
+		{{ feed.comments }} Comments
 	</div>
 	<div>
 		<form action="" method="POST">
 			{% csrf_token %}
 			<div class="form-group">
-				<input class="form-control" type="text" name="comment" id="comment">
+				<input class="form-control" type="text" name="content" id="content">
 			</div>
 			<button class="btn btn-primary pull-right" type="submit">Post</button><br>
 		</form>
@@ -30,7 +26,7 @@
 					<p>{{ comment.content }}</p>
 					<div class="text-right">
 						<p><small>
-							- {{ comment.user }}<br>
+							- {{ comment.user.username }}<br>
 							{{ comment.date }}
 							</small>
 						</p>

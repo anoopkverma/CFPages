@@ -15,12 +15,24 @@ def feed_form(request):
 		feed.post = post
 		feed.user = request.user
 		feed.save()
-		return allfeeds(request)
+		return all_feeds(request)
 	else:
 		feeds=Feed.get_feeds()
 		content = {'feeds':feeds}
 		return render(request,'feeds/feed_form.html',content)
 
-#def comment_form(request):
+
+def feed_view(request,feed_id):
+	feed = Feed.objects.get(id=feed_id)
+	if request.method=="POST":
+		content = request.POST['content']
+		comment =  Feed()
+		comment.content =  content
+		comment.user = request.user
+		comment.parent = feed
+		comment.save()
+	comments = Feed.objects.filter(parent=feed)
+	return render(request,'feeds/feed.html',{'feed':feed, 'comments':comments})
+
 
 
