@@ -15,6 +15,7 @@
 		{{ blog.comments }} Comments
 	</div>
 	<div>
+		{% if user.is_authenticated %}
 		<form action="" method="POST">
 			{% csrf_token %}
 			<div class="form-group">
@@ -22,6 +23,7 @@
 			</div>
 			<button class="btn btn-primary pull-right" type="submit">Post</button><br>
 		</form>
+		{% endif %}
 	</div><br>
 	<div>
 		<ul class="list-group">

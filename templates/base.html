@@ -33,6 +33,8 @@
 				{% if user.is_authenticated %}
 					<h3 style="text-align: center;">{{ user.first_name }} {{ user.last_name }}</h3>
 					<br> 
+					<a href="/blogs/my_blogs" class="btn btn-primary btn-block" style="color: white">My Blogs</a>
+					<a href="/feeds/my_feeds" class="btn btn-primary btn-block" style="color: white">My Feeds</a>
 					<a href="/users/logout" class="btn btn-primary btn-block" style="color:white;">Logout</a>
 				{% else %}
 				    <h3>You are not logged in.</h3>

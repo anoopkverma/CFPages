@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from .models import Blog, Comment
 from CFPages.views import home
+from users.views import login_view
 # Create your views here.
 
 def blog_form(request):
+	if not request.user.is_authenticated:
+		return login_view(request)
 	if request.method == 'POST' and validate_blog_form(request.POST):
 		title = request.POST['title']
 		content = request.POST['content']
@@ -34,4 +37,8 @@ def blog(request,blog_id):
 		comment.save()
 	comments = Comment.objects.filter(blog=blog)
 	return render(request,'blogs/blog.html',{'blog':blog, 'comments':comments})
-	
+
+def my_blogs(request):
+	blogs = Blog.objects.filter(user=request.user).order_by('-create_date')
+	content = {'blogs':blogs}
+	return render(request, 'home.html', content)

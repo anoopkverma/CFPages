@@ -5,4 +5,5 @@ urlpatterns = [
 	path('feed_form/',views.feed_form),
 	path('allfeeds/',views.all_feeds),
 	path('<int:feed_id>/',views.feed_view),
+	path('my_feeds/',views.my_feeds),
 ]
